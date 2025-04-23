@@ -1,15 +1,20 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "api/menus.js",
-        "use": "@vercel/node"
-      }
+        {
+            "src": "server.js",
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "db/db.json"
+                ]
+            }
+        }
     ],
     "routes": [
-      {
-        "src": "/menus",
-        "dest": "/api/menus.js"
-      }
+        {
+            "src": "/(.*)",
+            "dest": "server.js"
+        }
     ]
-  }
+}
